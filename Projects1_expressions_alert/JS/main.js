@@ -1,5 +1,5 @@
 window.alert ("Hi there!");
-document.alert("Ready or not! Here I come!");
+window.alert("Ready or not! Here I come!");
 
 var A= 'this is a string';
 
