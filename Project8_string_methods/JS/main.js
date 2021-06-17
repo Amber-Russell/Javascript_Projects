@@ -32,3 +32,9 @@ function my_Value() {
     var res = str.valueOf();                //value of the string
     document.getElementById("Value").innerHTML= res;
 }
+function myConcatString() {
+    var str1 = "How are you ";
+    var str2 = "doing today?";
+    var res = str1.concat(str2);
+    document.getElementById("Concat").innerHTML = res;
+}
