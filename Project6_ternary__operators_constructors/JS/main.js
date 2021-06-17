@@ -45,4 +45,3 @@ function count_Func() {
         return Starting_point;
         }
     }
-}
