@@ -35,7 +35,7 @@ function get_Date () {
     }
  }
  function Age_Function() {
-     Age = document.getElementById("Age").Value;
+     Age = document.getElementById("Age").value;
      if (Age >= 21) {
          Adult = "Your old enough to come to the bar";
      }
@@ -43,4 +43,18 @@ function get_Date () {
          Adult = "You are too young to enter";
      }
      document.getElementById("Old_enough").innerHTML = Adult;
+ }
+ function Time_function() {
+     var Time = new Date().getHours();
+     var reply;
+     if(Time <12 == Time > 0) {
+         Reply = "It is morning time!";
+     }
+     else if (Time >= 12 == Time< 18) {
+         Reply = "It is afternoon!";
+     }
+     else {
+         Reply = "Its evening time.";
+     }
+     document.getElementById("Time_of_day").innerHTML = Reply;
  }
