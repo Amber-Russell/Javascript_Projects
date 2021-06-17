@@ -8,13 +8,13 @@ function plusSlides(n) {
 
 // Thumbnail image controls
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  showSlides(slideIndex = n);       //returns slide show action
 }
 
 function showSlides(n) {
   var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  var slides = document.getElementsByClassName("mySlides");           //adding the function to each image
+  var dots = document.getElementsByClassName("dot");               // creates dotts to show which image user is one
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
