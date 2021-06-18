@@ -31,14 +31,14 @@ function cat_pics() {
     Cat_Picture[2] + ".";                  
 }
 function constant_function() {
-    const Vehicle= {make:"Honda", model:"Civic", color:"red"};
-    Vehicle.make = "toyota";
+    const Vehicle= {make:"Honda", model:"Civic", color:"red"};         //vehicle is the constant
+    Vehicle.make = "toyota";                         //value of make=toyota
     Vehicle.model = "forerunner";
     Vehicle.price = "$13,500";
     document.getElementById("Constant").innerHTML = "The cost of a " + 
     Vehicle.make + Vehicle.model + "is about " + Vehicle.price + ".";
 }
-
+{
     var Y = 34;
     document.write(Y);
     {
@@ -46,6 +46,42 @@ function constant_function() {
         document.write(Y);
     }
     document.getElementById("Let_Keyword").innerHTML= Y;
+}
+function returned() {
+    return Math.PI;
+}
 
+document.getElementById("return_Func").innerHTML = returned();
+
+let car = {
+    make: "Dodge ",
+    model: "Viper ",
+    year: "1976 ",
+    color: "blue ",
+    description : function() {
+        return "This car is a " + this.year + this.color + this.make + this.model;
+    }
+};
+document.getElementById("Car_Object").innerHTML = car.description();
+
+var text = "";
+var i;
+for (i = 0;i < 10; i++) {
+    if (i === 3) {
+        break;
+    }
+    text += "The number is " + i + "<br>";
+}
+document.getElementById("break_Func").innerHTML = text;
+
+var text = "";
+var i;
+for (i = 0;i < 10; i++) {
+    if (i === 3) {
+        continue;
+    }
+    text += "The number is " + i + "<br>";
+}
+document.getElementById("continue_Func").innerHTML = text;
 
 
