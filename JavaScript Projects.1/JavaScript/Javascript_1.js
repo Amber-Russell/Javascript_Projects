@@ -1,6 +1,6 @@
 function Animal_Func() {
     var Animal_Output;
-    var Animal = document.getElementById("Animal_Input").value;
+    var Animal = document.getElementById("Animal").value;
 var Animal_String = " is a great animal!";
 switch(Animals) {
     case "Bird":
