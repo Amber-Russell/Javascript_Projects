@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Contact Form</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="CSS/CSS_1.css">
+        <script src="JavaScript/Javascript_2.js"></script>
+    </head>
+    <body>
+        <h2>Contact Form</h2>
+      
+        <div>
+            <form name="myForm" action="/action_page.php" onsubmit="return validateForm()"
+            method="post"></form>
+            <form action="">
+
+            <label for="fname">First name</label>
+            <input type="text" id= "fname" name="firstname" placholder="Your name..">
+
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+            <label for="country">Country</label>
+            <select id="country" name="country" placeholder="Choose one..">
+                <option value="Australia">Australia</option>
+                <option value="canada">Canada</option>
+                <option value="usa">USA</option>
+            </select>
+
+            <input type="submit" value="Submit">
+        </form>
+        </div>
+
+
+
+
+
+    </body>
+</html>
