@@ -4,7 +4,7 @@ let activePlayer = 'X';
 let selectedSquares = [];
 
             //This function is for placing an x or o in a square.
-function placeXOrO(squareNumbers) {
+function placeXOrO(squareNumber) {
             //This condition ensures a square hasn't been selected already.
             //The .some() method is used to check each element of selectedSquare array
             //to see if it contains the square number clicked on.
@@ -14,7 +14,7 @@ function placeXOrO(squareNumbers) {
             //This condition checks whose turn it is.
     if (activePlayer === 'X'){
             //if active player is equal to X, the x.png is placed in html.
-        selectedSquares.style.backgroundImage = 'url("images/o.png';
+        selectedSquares.style.backgroundImage= 'url("images/o.png")';
     } else {
             //if activePlayer is equal to 'O', the o.png is placed in the HTML.
     select.style.backgroundImage = 'url("images/o.png")';
@@ -100,4 +100,63 @@ function audio(audioURL) {
 let audio = new Audio(audioURL);
     //Play method plays our audio sound.
 audio.play();
+}
+        //This utilizes HTMl canvas to draw lines.
+function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
+        //This line accesses our html canvas element.
+    const canvas = document.getElementById('win-lines')
+    const c = canvas.getContext('2d');
+        //This line indicates where the start of a line x axis is.
+    let x1 = coordX1,
+            //This line indicates where the start of a lines x axis is.
+        y1 = coorY1,
+            //This line indicates where the end of a lines x axis is.
+        x2 = coordX2,
+            //This line indicates where the end of a lines x axis is.
+        y2 = coordY2,
+            //This variable stores temporary x axis data we update in our animation loop.
+        x = x1,
+            //This variable stores temporary y axis data we update in our animation loop.
+        y = y1;
+
+
+            //this function interacts with the canvas.
+function animationLineDraw() {
+            //This variable creates a loop.
+    const animationLoop = requestAnimationFrame(animationLineDraw);
+            //this method clears content from last loop iteration.
+    c.clearRect(0, 0, 608, 608)
+            //This method starts a new path.
+    c.beginPath();
+            //Starting oint for our line.
+    c.moveTo(x1, y1)
+            //This method indicated the end point in our line.
+    c.lineTo(x1, y1)
+    c.lineWidth = 10;
+    c.strokeStyle = 'rgba(70, 255, 33, .8)';
+            //This method draws everything we laid out before.
+    c.stroke();
+            //this checks if we've reached the end point.
+        if (x1 <= x2 && y1 <= y2) {
+            if (x < x2) { x += 10; }
+            if (y < y2) { y += 10; }
+            if (x >= x2 && y >= y2) { cancelAnimationFrame(animationLoop) ; }
+        }
+    
+        if (x1 <= x2 && y1 >= y2) {
+            if (x < x2) { x += 10;} 
+            if (y > y2) { y -= 10;}
+            if (x >= x2 && y <= y2) ( cancelAnimationFrame(animationLoop))
+        }
+    }
+function clear() {
+    const animationLoop = requestAnimationFrame(clear);
+    c.clearRect(0, 0, 608, 608);
+            //This line stops our animation loop.
+    cancelAnimationFrame(animationLoop);
+}
+disableClick();
+audio('./media.winGame.mp3');
+animationLineDraw();
+setTimeout(function () { clear(); resetGame(); }, 1000);
 }
