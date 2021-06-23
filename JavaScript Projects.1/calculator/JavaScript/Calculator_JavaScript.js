@@ -10,18 +10,18 @@ const Calculator = {
 function Input_Digit(digit) {
     const { Display_Value, Wait_Second_Operand } = Calculator;          //checking if WSO is true and set DV to key that was clicked
     if (Wait_Second_Operand === true) {
-        Calculator.Diplay_Value = digit;
+        Calculator.Display_Value = digit;
         Calculator.Wait_Second_Operand = false;
     } else {                    //overwrites DV if current value is 0 otherwise adds to it.
-        Calculator.Diplay_Value = Display_Value === '0' ? digit : Display_Value + digit;
+        Calculator.Display_Value = Display_Value === '0' ? digit : Display_Value + digit;
     }
 }
 
                 //this section handles decimal points.
 function Input_Decimal(dot) {
     if (Calculator.Wait_Second_Operand === true) return;        //ensures accidental click of decial doesnt casue bug
-    if (!Calculator.Diplay_Value.includes(dot)) {           //if DV doesnt contain decimal we add decimal point
-        Calculator.Diplay_Value += dot;
+    if (!Calculator.Display_Value.includes(dot)) {           //if DV doesnt contain decimal we add decimal point
+        Calculator.Display_Value += dot;
     }
 }
 
@@ -37,10 +37,10 @@ function Handle_Operator(Next_Operator) {
         Calculator.First_Operand = Value_of_Input;
     } else if(operator) {
         const Value_Now = First_Operand || 0;
-        let result = Perform_Calculation[operator] (Value_Now, Value_of_Input);
+        let result = Perform_Calculation[operator](Value_Now, Value_of_Input);
         result = Number(result).toFixed(9)
         result = (result * 1).toString()
-        Calculator.Diplay_Value = parseFloat(result);
+        Calculator.Display_Value = parseFloat(result);
         Calculator.First_Operand = parseFloat(result);
     }
     Calculator.Wait_Second_Operand = true;
@@ -55,7 +55,7 @@ const Perform_Calculation = {
 };
 
 function Calculator_Reset() {
-    Calculator.Diplay_Value = '0';
+    Calculator.Display_Value = '0';
     Calculator.First_Operand = null;
     Calculator.Wait_Second_Operand = false;
     Calculator.operator = null;
@@ -63,12 +63,12 @@ function Calculator_Reset() {
 
 function Update_Display() {
     const display = document.querySelector('.calculator-screen');
-    display.value = Calculator.Diplay_Value;
+    display.value = Calculator.Display_Value;
 }
 
 Update_Display();
 const Keys = document.querySelector('.calculator-keys');
-Keys,addEventListener('click', (event) => {
+Keys.addEventListener('click', (event) => {
     const {target} = event;
     if (!target.matches('button')) {
         return;
