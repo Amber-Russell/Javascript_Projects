@@ -1,6 +1,6 @@
           //This variable keeps track of whose turn it is.
 let activePlayer = 'X';
-          //This array stpres an array of moves. We use this to determine win conditions.
+          //This array stores an array of moves. We use this to determine win conditions.
 let selectedSquares = [];
 
             //This function is for placing an x or o in a square.
@@ -14,7 +14,7 @@ function placeXOrO(squareNumber) {
             //This condition checks whose turn it is.
     if (activePlayer === 'X'){
             //if active player is equal to X, the x.png is placed in html.
-        selectedSquares.style.backgroundImage= 'url("images/o.png")';
+        select.style.backgroundImage= 'url("images/o.png")';
     } else {
             //if activePlayer is equal to 'O', the o.png is placed in the HTML.
     select.style.backgroundImage = 'url("images/o.png")';
@@ -31,9 +31,9 @@ function placeXOrO(squareNumber) {
     }
             
             //This function plays placment sound.
-    Audio('./media/place.mp3');
+    audio('./media/bell1.mp3');
             //This condition checks to see if it is computers turn.
-    if(activePlayer --- 'O') {
+    if (activePlayer === 'O') {
             //This function disables clicking for computer choice.
         disableClick();
             //This function waits one second before computer places image and enables click.
@@ -48,7 +48,7 @@ function placeXOrO(squareNumber) {
         let success = false;
         let pickASquare;
         while (!success){
-            pickASquare = String(Math.floor(Math,random() * 9));
+            pickASquare = String(Math.floor(Math.random() * 9));
             if (placeXOrO(pickASquare)) {
                 success - true;
             };
@@ -76,7 +76,7 @@ else if (arrayIncludes('2O', '5O', '8O')) {drawWinLine(508, 50, 508, 558) }
 else if (arrayIncludes('6O', '4O', '2O')) {drawWinLine(100, 508, 510, 90) }
 else if (arrayIncludes('0O', '4O', '8O')) {drawWinLine(100, 100, 520, 520) }
 else if (selectedSquares.length >= 9) {
-    Audio('./media/tie.mp3');
+    audio('./media/bell2.mp3');
     setTimeout(function () {resetGame(); }, 1000);
 }
 
@@ -92,7 +92,7 @@ function arrayIncludes(squareA, squareB, squareC) {
 function disableClick() {
     body.style.pointerEvents = 'none';
             //This makes our body unclickable.
-setTimeout(function() {body,dtyle.pointerEvents = 'auto';}, 1000) ;
+setTimeout(function() {body.style.pointerEvents = 'auto';}, 1000) ;
 }
             //This function takes a string parameter of the path you set earlier for placement sound ('./media/place/mp3')
 function audio(audioURL) {
@@ -109,7 +109,7 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
         //This line indicates where the start of a line x axis is.
     let x1 = coordX1,
             //This line indicates where the start of a lines x axis is.
-        y1 = coorY1,
+        y1 = coordY1,
             //This line indicates where the end of a lines x axis is.
         x2 = coordX2,
             //This line indicates where the end of a lines x axis is.
@@ -159,4 +159,13 @@ disableClick();
 audio('./media.winGame.mp3');
 animationLineDraw();
 setTimeout(function () { clear(); resetGame(); }, 1000);
+}
+
+            //This function resets the game in the event of a tie or a win.
+function resetGame() {
+    for (let i = 0; i < 9; i++) {
+        let square = document.getElementById(String(i))
+        square.style.backgroundImage= ''
+    }
+    selectedSquares = [];
 }
